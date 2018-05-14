@@ -209,3 +209,24 @@ D:\Documents\Visual Studio 2015\Projects\BookShop\Web\bin\BookShop.DBUtility.pdb
 D:\Documents\Visual Studio 2015\Projects\BookShop\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\BookShop\Web\obj\Debug\BookShop.Web.dll
 D:\Documents\Visual Studio 2015\Projects\BookShop\Web\obj\Debug\BookShop.Web.pdb
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.Web.dll.config
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.Web.dll
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.Web.pdb
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.BLL.dll
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.Model.dll
+D:\Documents\GitHub\BookShop\Web\bin\Common.dll
+D:\Documents\GitHub\BookShop\Web\bin\LTP.Accounts.dll
+D:\Documents\GitHub\BookShop\Web\bin\LTP.Common.dll
+D:\Documents\GitHub\BookShop\Web\bin\LtpPageControl.dll
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.DAL.dll
+D:\Documents\GitHub\BookShop\Web\bin\Maticsoft.Common.dll
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.DBUtility.dll
+D:\Documents\GitHub\BookShop\Web\bin\MySql.Data.dll
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.BLL.pdb
+D:\Documents\GitHub\BookShop\Web\bin\Common.pdb
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.Model.pdb
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.DAL.pdb
+D:\Documents\GitHub\BookShop\Web\bin\BookShop.DBUtility.pdb
+D:\Documents\GitHub\BookShop\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\BookShop\Web\obj\Debug\BookShop.Web.dll
+D:\Documents\GitHub\BookShop\Web\obj\Debug\BookShop.Web.pdb

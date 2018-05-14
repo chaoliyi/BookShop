@@ -2,25 +2,21 @@
 
 <html>
 <head>
-<title>北京市新华书店王府井书店 - 网上书店80折起，购书满99元免运费！</title>
-<meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592" name="description"/>
-<meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>北京市新华书店王府井书店 - 网上书店80折起，购书满99元免运费！</title>
+    <meta content="北京市新华书店王府井书店，致力于提供专业化购书服务.网上购书选择新华书店王府井书店(网上书店),购书放心有保障.王府井书店电话:010-65132842.010-65252592" name="description" />
+    <meta content="王府井书店 新华书店 网上书店 网上购书 北京图书大厦" name="keywords">
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 
-<link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
     <script src="../js/jquery-1.10.2.min.js"></script>
-    <asp:ContentPlaceHolder ID="Header" runat="server"> 
-
-
+    <asp:ContentPlaceHolder ID="Header" runat="server">
     </asp:ContentPlaceHolder>
 
 </head>
 
 
-<body > 
-<form id="form1" runat="server">
-
-<center>
+<body>
+    <center>
 
 <div class="top">
 	<div class="m_c" style="width: 736px; height: 27px">
@@ -61,8 +57,6 @@
 </div>
 
 </center>
-
-    </form>
 </body>
 
 </html>

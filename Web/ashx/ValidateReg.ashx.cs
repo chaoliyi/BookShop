@@ -19,8 +19,34 @@ namespace BookShop.Web.ashx
             {
                 CheckUserEmail(context);
             }
+            else if(action=="validateCode")
+            {
+                CheckUserCode(context);
+            }
             
             
+        }
+
+        //校验验证码
+        private void CheckUserCode(HttpContext context)
+        {
+            string userVCode = context.Request["userVCode"];
+            string sysVCode = context.Session["vCode"].ToString();
+            if (sysVCode!=null)
+            {
+                if (sysVCode.Equals(userVCode, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    context.Response.Write("验证码正确");
+                }
+                else
+                {
+                    context.Response.Write("验证码错误");
+                }
+            }
+            else
+            {
+                context.Response.Write("生成验证码出错");
+            }
         }
 
         private void CheckUserEmail(HttpContext context)

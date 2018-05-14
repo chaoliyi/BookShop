@@ -2,11 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            height: 35px;
-        }
-
-        .regnow {
+        input{width:200px; height:25px; line-height:25px; margin:5px 0;}
+        input.btn{
             width: 300px;
             margin-left: 30px;
             height: 40px;
@@ -19,15 +16,14 @@
         }
     </style>
     <script type="text/javascript">
-
         $(function () {
             /*邮箱验证*/
-            $("#txtMail").blur(function () {
-                if ($(this).val().length>0) {
+            $("#txtEmail").blur(function () {
+                if ($(this).val().length > 0) {
                     var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
                     if (reg.test($(this).val())) {
                         $("#emailTips").hide();
-                        $.post("/ashx/ValidateReg.ashx", {"action":"validateEmail","userEmail":$(this).val()}, function (data) {
+                        $.post("/ashx/ValidateReg.ashx", { "action": "validateEmail", "userEmail": $(this).val() }, function (data) {
                             $("#emailTips").text(data).show();
                         });
                     } else {
@@ -38,157 +34,64 @@
                 }
             });
             /*邮箱验证 End*/
+            /*校验验证码*/
+            $("#txtCode").blur(function () {
+                if ($(this).val().length > 0) {
+                    var reg = /^\d+$/;
+                    if (reg.test($(this).val())) {
+                        $("#validateCodeTips").hide();
+                        $.post("/ashx/ValidateReg.ashx", { "action": "validateCode", "userVCode": $(this).val() }, function (data) {
+                            $("#validateCodeTips").text(data).show();
+                        });
+                    } else {
+                        $("#validateCodeTips").text("验证码格式错！").show();
+                    }
+                } else {
+                    $("#validateCodeTips").text("验证不能为空!").show();
+                }
+            });
+            /*校验验证码 End*/
+            /*注册用户*/
+            $("#btnRegister").click(function () {
+                if ($("#txtName").val() == "") { $("#nameTips").text("用户名不能为空"); return false; }
+                if ($("#txtPwd").val() == "") { $("#pwdTips").text("密码不能为空"); return false; }
+                if ($("#txtConfirmPwd").val() == "") { $("#confirmPwdTips").text("确认密码不能为空"); return false; }
+
+                var pars = $("#formRegister").serializeArray();
+                $.post("/ashx/AjaxRegister.ashx", pars, function (data) {
+                    if (data=="ok") {
+                        window.location.href = "/Default.aspx";
+                    } else {
+                        window.location.href = "/ShowMsg.aspx?msg=" + data + "&txt=首页&url=/Default.aspx"
+                    }
+                });
+            });
+            /*注册用户 End*/
         });
-
-        
-
-
-        //$(function () {
-        //    $("#userMail").blur(function () {
-        //        validateEmail();
-        //    });
-        //    $("#validateCode").blur(function () {
-        //        validateUserCode();
-        //    });
-        //    $("#btnRegister").click(function () {//注册
-        //        if ($("#userMail").val() == "") { $("#msg").text("邮箱不能为空!!"); return false }
-        //        if ($("#validateCode").val() == "") { $("#validateCodeMsg").text("验证码不能为空!!"); return false }
-        //        var par = $("#aspnetForm").serializeArray();
-        //        $.post("/ashx/UserRegister.ashx", par, function (data) {
-        //            $("#validateCodeMsg").text(data);
-        //        });
-        //    });
-        //});
-        ////验证邮箱
-        //function validateEmail() {
-        //    var val = $("#userMail").val();
-        //    if (val != "") {
-        //        var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-        //        if (reg.test(val)) {
-        //            $("#msg").css("display", "none");
-        //            $.post("/ashx/ValidateReg.ashx", { "action": "mail", "userMail": val }, function (data) {
-        //                $("#msg").css("display", "block");
-        //                $("#msg").text(data);
-        //            });
-        //        } else {
-        //            $("#msg").text("邮箱格式错误!!");
-
-        //        }
-
-        //    } else {
-        //        $("#msg").text("邮箱不能为空!!");
-        //    }
-        //}
-        ////验证校验码
-        //function validateUserCode() {
-        //    var code = $("#validateCode").val();
-        //    if (code != "") {
-        //        var reg = /^[0-9]*$/;
-        //        if (reg.test(code)) {
-        //            $.post("/ashx/ValidateReg.ashx", { "action": "code", "validateCode": code }, function (data) {
-        //                $("#validateCodeMsg").text(data);
-        //            });
-        //        }
-        //        else {
-        //            $("#validateCodeMsg").text("验证码格式错!!");
-        //        }
-
-        //    } else {
-        //        $("#validateCodeMsg").text("验证码不能为空!!");
-        //    }
-        //}
-
-
     </script>
 
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div style="font-size: small">
-        <table width="80%" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-                <td style="width: 10px">
-                    <img src="../Images/az-tan-top-left-round-corner.gif" width="10" height="28" /></td>
-                <td bgcolor="#DDDDCC"><span class="STYLE1">注册新用户</span></td>
-                <td width="10">
-                    <img src="../Images/az-tan-top-right-round-corner.gif" width="10" height="28" /></td>
-            </tr>
-        </table>
-
-
-        <table width="80%" height="22" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-                <td width="2" bgcolor="#DDDDCC">&nbsp;</td>
-                <td>
-                    <div align="center">
-                        <table height="61" cellpadding="0" cellspacing="0" style="height: 332px">
-                            <tr>
-                                <td height="33" colspan="6">
-                                    <p class="STYLE2" style="text-align: center">注册新帐户方便又容易</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="24%" align="center" valign="top" style="height: 26px">用户名</td>
-                                <td valign="top" width="37%" align="left" style="height: 26px">
-                                    <input type="text" name="txtName" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">真实姓名：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="text" name="txtRealName" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">密码：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="password" name="txtPwd" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">确认密码：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="password" name="txtConfirmPwd" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">Email：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="text" name="txtEmail" id="txtMail" /><span id="emailTips" style="font-size: 14px; color: red"></span></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">地址：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="text" name="txtAddress" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" height="26" align="center" valign="top">手机：</td>
-                                <td valign="top" width="37%" align="left">
-                                    <input type="text" name="txtPhone" /></td>
-                            </tr>
-                            <tr>
-                                <td width="24%" align="center" valign="top" class="auto-style1">验证码：</td>
-                                <td valign="top" width="37%" align="left" class="auto-style1">
-                                    <input type="text" name="txtCode" id="validateCode" /><span id="validateCodeMsg" style="font-size: 14px; color: red"></span><img src="/ashx/ValidateCode.ashx" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="center">
-                                    <input type="submit" value="注册" class="regnow" id="btnRegister" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="center">&nbsp;</td>
-                            </tr>
-                        </table>
-                        <div class="STYLE5">---------------------------------------------------------</div>
-                    </div>
-                </td>
-                <td width="2" bgcolor="#DDDDCC">&nbsp;</td>
-            </tr>
-        </table>
-
-        <table width="80%" height="3" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-                <td height="3" bgcolor="#DDDDCC">
-                    <img src="../Images/touming.gif" width="27" height="9" /></td>
-            </tr>
-        </table>
-    </div>
-
+    <form id="formRegister">
+        <div id="main">
+            用户名：<span id="nameTips" style="font-size: 14px; color: red"></span><br />
+            <input type="text" name="txtName" id="txtName"/><br />
+            真实姓名：<br />
+            <input type="text" name="txtRealName" /><br />
+            密码：<span id="pwdTips" style="font-size: 14px; color: red"></span><br />
+            <input type="password" name="txtPwd" id="txtPwd" /><br />
+            确认密码：<span id="confirmPwdTips" style="font-size: 14px; color: red"></span><br />
+            <input type="password" name="txtConfirmPwd" id="txtConfirmPwd"/><br />
+            Email：<span id="emailTips" style="font-size: 14px; color: red"></span><br />
+            <input type="text" name="txtEmail" id="txtEmail" /><br />
+            地址：<br />
+            <input type="text" name="txtAddress" /><br />
+            手机：<br />
+            <input type="text" name="txtPhone" /><br />
+            验证码：<span id="validateCodeTips" style="font-size: 14px; color: red"></span><br />
+            <input type="text" name="txtCode" id="txtCode" /><img src="/ashx/ValidateCode.ashx" /><br /><br />
+            <input type="button" value="注册" class="btn" id="btnRegister" />
+        </div>
+    </form>
 </asp:Content>
