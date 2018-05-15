@@ -9,17 +9,65 @@ namespace BookShop.Web.ashx
     /// <summary>
     /// AjaxRegister 的摘要说明
     /// </summary>
-    public class AjaxRegister : IHttpHandler,System.Web.SessionState.IRequiresSessionState
+    public class AjaxRegister : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
-
+        BLL.UserManager userManager = new BLL.UserManager();
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            if (Common.WebCommon.CheckValidateCode(context.Request["txtCode"]))//服务端校验验证码
+            if (CheckUserName(context.Request["txtName"]))
             {
-                AddUserInfo(context);
+                context.Response.Write("用户名已存在");
+                return;
             }
+            if (CheckEmail(context.Request["txtEmail"]))
+            {
+                context.Response.Write("邮箱已存在");
+                return;
+            }
+            if (!CheckValidateCode(context.Request["txtCode"]))
+            {
+                context.Response.Write("验证码错误");
+                return;
+            }
+            //添加用户
+            AddUserInfo(context);
         }
+
+        //服务端-校验用户名
+        private bool CheckUserName(string name)
+        {
+            bool exist = false;
+            if (userManager.ValidateUserName(name))
+            {
+                exist = true;
+            }
+            return exist;
+        }
+        //服务端-校验邮箱
+        private bool CheckEmail(string email)
+        {
+            bool exist = false;
+            if (userManager.CheckUserMail(email))
+            {
+                exist = true;
+            }
+            return exist;
+        }
+
+        //服务端-校验验证码
+        private bool CheckValidateCode(string vCode)
+        {
+            bool isRight = false;
+            if (HttpContext.Current.Session["vCode"].ToString().Equals(vCode, StringComparison.InvariantCultureIgnoreCase))
+            {
+                isRight = true;
+                HttpContext.Current.Session["vCode"] = null;
+            }
+            return isRight;
+        }
+
+       
 
         private void AddUserInfo(HttpContext context)
         {

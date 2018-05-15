@@ -23,8 +23,29 @@ namespace BookShop.Web.ashx
             {
                 CheckUserCode(context);
             }
+            else if (action=="validateName")
+            {
+                CheckUserName(context);
+            }
+            else
+            {
+                context.Response.Write("参数错误!");
+            }
             
             
+        }
+        //校验用户名
+        private void CheckUserName(HttpContext context)
+        {
+            string userName = context.Request["userName"];
+            if (userManager.ValidateUserName(userName))
+            {
+                context.Response.Write("用户名已存在");
+            }
+            else
+            {
+                context.Response.Write("用户名可用");
+            }
         }
 
         //校验验证码
@@ -48,7 +69,7 @@ namespace BookShop.Web.ashx
                 context.Response.Write("生成验证码出错");
             }
         }
-
+        //校验邮箱
         private void CheckUserEmail(HttpContext context)
         {
             string userEmail = context.Request["userEmail"];

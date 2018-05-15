@@ -17,6 +17,19 @@
     </style>
     <script type="text/javascript">
         $(function () {
+            /*校验用户名*/
+            $("#txtName").blur(function () {
+                if ($(this).val().length > 0) {
+
+                    $("#validateCodeTips").hide();
+                    $.post("/ashx/ValidateReg.ashx", { "action": "validateName", "userName": $(this).val() }, function (data) {
+                        $("#nameTips").text(data).show();
+                    });
+                } else {
+                    $("#nameTips").text("用户名不能为空!").show();
+                }
+            });
+            /*校验验证码 End*/
             /*邮箱验证*/
             $("#txtEmail").blur(function () {
                 if ($(this).val().length > 0) {
@@ -53,13 +66,13 @@
             /*校验验证码 End*/
             /*注册用户*/
             $("#btnRegister").click(function () {
-                if ($("#txtName").val() == "") { $("#nameTips").text("用户名不能为空"); return false; }
-                if ($("#txtPwd").val() == "") { $("#pwdTips").text("密码不能为空"); return false; }
-                if ($("#txtConfirmPwd").val() == "") { $("#confirmPwdTips").text("确认密码不能为空"); return false; }
+                //if ($("#txtName").val() == "") { $("#nameTips").text("用户名不能为空"); return false; }
+                //if ($("#txtPwd").val() == "") { $("#pwdTips").text("密码不能为空"); return false; }
+                //if ($("#txtConfirmPwd").val() == "") { $("#confirmPwdTips").text("确认密码不能为空"); return false; }
 
                 var pars = $("#formRegister").serializeArray();
                 $.post("/ashx/AjaxRegister.ashx", pars, function (data) {
-                    if (data=="ok") {
+                    if (data == "ok") {
                         window.location.href = "/Default.aspx";
                     } else {
                         window.location.href = "/ShowMsg.aspx?msg=" + data + "&txt=首页&url=/Default.aspx"
