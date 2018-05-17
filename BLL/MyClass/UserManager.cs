@@ -75,5 +75,14 @@ namespace BookShop.BLL
             }
             return isSucess;
         }
+        /// <summary>
+        /// 根据用户名查找用户信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public Model.User GetModel(string userName)
+        {            
+            return dal.GetModel(userName); 
+        }
     }
 }

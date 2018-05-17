@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -49,6 +50,25 @@ namespace Common
         public static void RedirectPage()
         {
             HttpContext.Current.Response.Redirect("/Member/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url.ToString());
+        }
+        /// <summary>
+        /// 字符串转MD5
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string StringConvertToMD5(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            using (MD5 md5=MD5.Create())
+            {
+                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(str);
+                buffer = md5.ComputeHash(buffer);
+                foreach (byte b in buffer)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+            }
+            return sb.ToString();
         }
     }
 }
