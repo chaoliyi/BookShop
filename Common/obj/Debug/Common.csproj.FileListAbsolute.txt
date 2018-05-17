@@ -10,6 +10,6 @@ C:\Users\Administrator\Desktop\BookShop\Common\obj\Debug\Common.dll
 C:\Users\Administrator\Desktop\BookShop\Common\obj\Debug\Common.pdb
 D:\Documents\Visual Studio 2015\Projects\BookShop\Common\bin\Debug\Common.dll
 D:\Documents\Visual Studio 2015\Projects\BookShop\Common\bin\Debug\Common.pdb
-D:\Documents\Visual Studio 2015\Projects\BookShop\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\BookShop\Common\obj\Debug\Common.dll
 D:\Documents\Visual Studio 2015\Projects\BookShop\Common\obj\Debug\Common.pdb
+D:\Documents\Visual Studio 2015\Projects\BookShop\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

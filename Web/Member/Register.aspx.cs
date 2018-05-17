@@ -11,6 +11,7 @@ namespace BookShop.Web.Member
 {
     public partial class Register : System.Web.UI.Page
     {
+        public string ReturnUrl { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -19,6 +20,10 @@ namespace BookShop.Web.Member
                 {
                     AddUserInfo();
                 }
+            }
+            else
+            {
+                this.ReturnUrl = Request["returnUrl"];
             }
         }
 
@@ -41,7 +46,14 @@ namespace BookShop.Web.Member
             {
                 //跳转后实现自动登录
                 Session["userInfo"] = userInfo;
-                Response.Redirect("/Default.aspx");
+                if (string.IsNullOrEmpty(Request["hiddenReturnUrl"]))
+                {
+                    Response.Redirect("/Default.aspx");
+                }
+                else
+                {
+                    Response.Redirect(Request["hiddenReturnUrl"]);
+                }
             }
             else
             {

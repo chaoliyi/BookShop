@@ -50,6 +50,5 @@ C:\Users\Administrator\Desktop\BookShop\Model\obj\Debug\BookShop.Model.dll
 C:\Users\Administrator\Desktop\BookShop\Model\obj\Debug\BookShop.Model.pdb
 D:\Documents\Visual Studio 2015\Projects\BookShop\Model\bin\Debug\BookShop.Model.dll
 D:\Documents\Visual Studio 2015\Projects\BookShop\Model\bin\Debug\BookShop.Model.pdb
-D:\Documents\Visual Studio 2015\Projects\BookShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2015\Projects\BookShop\Model\obj\Debug\BookShop.Model.dll
 D:\Documents\Visual Studio 2015\Projects\BookShop\Model\obj\Debug\BookShop.Model.pdb

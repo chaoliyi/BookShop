@@ -9,40 +9,46 @@ using System.Web.Hosting;
 
 namespace Common
 {
-   public class WebCommon
+    public class WebCommon
     {
-       /// <summary>
-       /// 线程内唯一对象  CallContext
-       /// </summary>
-       public static void GetFilePath(object obj)
-       {
-           HttpContext context = (HttpContext)obj;
-           string filePath = context.Request.MapPath("/Images/body.jpg");
+        /// <summary>
+        /// 线程内唯一对象  CallContext
+        /// </summary>
+        public static void GetFilePath(object obj)
+        {
+            HttpContext context = (HttpContext)obj;
+            string filePath = context.Request.MapPath("/Images/body.jpg");
 
-          // string filePath = HostingEnvironment.MapPath("/Images/body.jpg");
-           //string filePath=
-          // return "";
-       }
-       /// <summary>
-       /// 完成验证码校验
-       /// </summary>
-       /// <returns></returns>
-       public static bool CheckValidateCode(string validateCode)
-       {
-           bool isSucess = false;
-           if (HttpContext.Current.Session["vCode"] != null)
-           {
-              // string txtCode = HttpContext.Current.Request["txtCode"];
-               string sysCode =HttpContext.Current.Session["vCode"].ToString();
-               if (sysCode.Equals(validateCode, StringComparison.InvariantCultureIgnoreCase))
-               {
-                   isSucess = true;
-                   HttpContext.Current.Session["vCode"] = null;
-               }
+            // string filePath = HostingEnvironment.MapPath("/Images/body.jpg");
+            //string filePath=
+            // return "";
+        }
+        /// <summary>
+        /// 完成验证码校验
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckValidateCode(string validateCode)
+        {
+            bool isSucess = false;
+            if (HttpContext.Current.Session["vCode"] != null)
+            {
+                // string txtCode = HttpContext.Current.Request["txtCode"];
+                string sysCode = HttpContext.Current.Session["vCode"].ToString();
+                if (sysCode.Equals(validateCode, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    isSucess = true;
+                    HttpContext.Current.Session["vCode"] = null;
+                }
 
-           }
-           return isSucess;
-       }
-
+            }
+            return isSucess;
+        }
+        /// <summary>
+        /// 跳转页面
+        /// </summary>
+        public static void RedirectPage()
+        {
+            HttpContext.Current.Response.Redirect("/Member/Login.aspx?returnUrl=" + HttpContext.Current.Request.Url.ToString());
+        }
     }
 }

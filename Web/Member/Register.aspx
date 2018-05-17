@@ -103,7 +103,9 @@
             手机：<br />
             <input type="text" name="txtPhone" /><br />
             验证码：<span id="validateCodeTips" style="font-size: 14px; color: red"></span><br />
-            <input type="text" name="txtCode" id="txtCode" /><img src="/ashx/ValidateCode.ashx" /><br /><br />
+            <input type="text" name="txtCode" id="txtCode" /><br />
+            <img src="/ashx/ValidateCode.ashx" /><br /><br />
+            <input type="hidden" name="hiddenReturnUrl" value="<%=this.ReturnUrl %>" />
             <input type="button" value="注册" class="btn" id="btnRegister" />
         </div>
     </form>
