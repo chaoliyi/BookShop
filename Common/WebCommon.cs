@@ -70,5 +70,23 @@ namespace Common
             }
             return sb.ToString();
         }
+        /// <summary>
+        /// 判断字符串数组中是否有空值
+        /// </summary>
+        /// <param name="pars"></param>
+        /// <returns></returns>
+        public static bool StringIsNullOrEmpty(params string[] pars)
+        {
+            bool flag = false;
+            foreach (var str in pars)
+            {
+                if (string.IsNullOrEmpty(str))
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }

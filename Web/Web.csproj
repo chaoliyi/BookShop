@@ -143,6 +143,7 @@
     <Content Include="js\imgareaselect\jquery.imgareaselect.pack.js" />
     <Content Include="js\jquery.easyui.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="Member\FindPwd.aspx" />
     <Content Include="Member\Login.aspx" />
     <Content Include="Member\Register.aspx" />
     <Content Include="ProcessImage_easyui.aspx" />
@@ -158,6 +159,9 @@
   <ItemGroup>
     <Compile Include="ashx\AjaxRegister.ashx.cs">
       <DependentUpon>AjaxRegister.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\FindPwd.ashx.cs">
+      <DependentUpon>FindPwd.ashx</DependentUpon>
     </Compile>
     <Compile Include="ashx\upload.ashx.cs">
       <DependentUpon>upload.ashx</DependentUpon>
@@ -182,6 +186,13 @@
     </Compile>
     <Compile Include="Master\MainMaster.Master.designer.cs">
       <DependentUpon>MainMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Member\FindPwd.aspx.cs">
+      <DependentUpon>FindPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Member\FindPwd.aspx.designer.cs">
+      <DependentUpon>FindPwd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Member\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -1758,6 +1769,7 @@
     <Content Include="ashx\UserRegister.ashx" />
     <Content Include="ashx\AjaxRegister.ashx" />
     <Content Include="ashx\upload.ashx" />
+    <Content Include="ashx\FindPwd.ashx" />
     <None Include="ewebeditor\sysimage\Thumbs.db" />
     <None Include="Images\BookCovers\9787560925110jpg" />
     <None Include="Images\BookCovers\Thumbs.db" />

@@ -48,7 +48,7 @@
                         </tr>
                         <tr>
                             <td width="24%" height="26" rowspan="3" align="right" valign="top"><strong>密　码：</strong></td>
-                            <td valign="top" width="37%">&nbsp;<input type="text" name="txtLoginPwd" id="txtLoginPwd" value="" /></td>
+                            <td valign="top" width="37%">&nbsp;<input type="text" name="txtLoginPwd" id="txtLoginPwd" value="" /><a href="FindPwd.aspx">忘记密码？</a></td>
                         </tr>
 
                         <tr>
